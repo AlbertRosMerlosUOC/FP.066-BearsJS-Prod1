@@ -61,7 +61,7 @@
                 <textarea type="text"placeholder="Description" rows="3" id="descInput"></textarea>
               </div>
               <input type="color" placeholder="Enter your color" id="colorInput">
-              <button type="submit" class="btn btn-primary">Add asdasd</button>
+              <button type="submit" class="btn btn-primary">Add</button>
             </form>
           </div>
         </div>
@@ -73,10 +73,24 @@
     <!-- Las nuevas tarjetas se agregarán aquí -->
     </div>
 
+    <div class="modal fade" id="myModalQuit" tabindex="1" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="myModalLabel">Agregar tarjeta</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>¿Estas seguro que quieres borrar esta tarjeta?</p>
+          </div>
+          <button type="button" class="btn btn-primary" id="QuitCard">Quitar</button>
+        </div>
+      </div>
+    </div>
 
   </div>
 
-  <script src="./main.js"></script>
+  <script src="./js/main.js"></script>
   
   
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"

@@ -20,7 +20,9 @@ form.addEventListener("submit", (event) => {
   card.innerHTML = `
     <h2>Week ${week}, ${year}</h2>
     <p>${desc}</p>
-  `;
+    <button type=\"button\" class=\"btn btn-primary agree\">Agregar tarjeta</button>
+    <button type=\"button\" class=\"btn btn-primary delete\" id=\"delete\" data-bs-toggle=\"modal\" data-bs-target=\"#myModalQuit\">Quitar tarjeta</button>
+    `;
 
   // Agregar la tarjeta al contenedor
   cardContainer.appendChild(card);
@@ -32,4 +34,19 @@ form.addEventListener("submit", (event) => {
   const modal = document.querySelector("#myModal");
   const modalInstance = bootstrap.Modal.getInstance(modal);
   modalInstance.hide();
+
+  // Funcionalidad de quitar tarjeta (lanza modal de confirmacion)
+  const quitCard = document.querySelector("#QuitCard");
+
+  quitCard.addEventListener("click", () => {
+    tareaEliminada(card);
+    const modalQuit = document.querySelector("#myModalQuit");
+    const modalInstance = bootstrap.Modal.getInstance(modalQuit);
+    modalInstance.hide();
+  });
 });
+
+//Elimina el elemento padre del elemento que se haya seleccionado
+function tareaEliminada(element) {
+  element.parentNode.parentNode.removeChild(element.parentNode);
+}
