@@ -20,6 +20,8 @@ form.addEventListener("submit", (event) => {
   card.innerHTML = `
     <h2>Week ${week}, ${year}</h2>
     <p>${desc}</p>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Eliminar</button>
+    <button type="button" class="btn btn-primary" onclick="window.location.href='html/dashboard.html'">Consultar</button>
   `;
 
   // Agregar la tarjeta al contenedor
