@@ -41,7 +41,6 @@
     padding: 3px;
     background-color: #e1e1e1;
     background-image: repeating-linear-gradient(135deg, rgba(0, 0, 0, 0.05) 0px, rgba(0, 0, 0, 0.05) 1px, transparent 1px, transparent 10px);
-
 }
 .cardTask {
     width: 140px !important;
@@ -70,7 +69,7 @@
     display: inline-block;
     font-weight: bold;
     margin-bottom: 5px;
-  }
+}
 
 .form-group {
     margin-bottom: 10px;
