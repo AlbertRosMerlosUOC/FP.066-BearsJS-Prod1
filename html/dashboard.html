@@ -54,28 +54,61 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="newTaskLabel">Nueva tarea</h5>
+            <h5 class="modal-title" id="newTaskLabel">Formulario de tareas</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <form id="myForm">
-              <input type="text" placeholder="Nombre de la tarea" id="nameInput" maxlength="25">
-              <textarea type="text" placeholder="Descripción" rows="3" id="descInput"></textarea>
-              <input type="time" placeholder="Hora de inicio" id="iniInput" maxlength="5">
-              <input type="time" placeholder="Hora de final" id="endInput" maxlength="5">
-              <input type="radio" name="taskType" id="typeIInput" value="I">Incidencia</input>
-              <input type="radio" name="taskType" id="typePInput" value="P">Petición</input>
-              <select id="userInput">
-                <option value="M">Marc</option>
-                <option value="F">Fernando</option>
-                <option value="A">Albert</option>
-                <option value="S">Silvia</option>
-                <option value="E">Eric</option>
-              </select>
-              <input type="checkbox" placeholder="Terminada" id="finishedInput"> Terminada
-              <button type="submit" class="btn btn-primary">Add</button>
+              <div class="form-group">
+                <label class="form-label" for="nameInput">Nombre de la tarea</label>
+                <input class="form-control" type="text" placeholder="Nombre de la tarea" id="nameInput" maxlength="25">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="descInput">Descripción</label>
+                <textarea class="form-control" placeholder="Descripción" rows="3" id="descInput"></textarea>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col">
+                    <label class="form-label" for="iniInput">Hora de inicio</label>
+                    <input class="form-control" type="time" placeholder="Hora de inicio" id="iniInput" maxlength="5">
+                  </div>
+                  <div class="col">
+                    <label class="form-label" for="endInput">Hora de final</label>
+                    <input class="form-control" type="time" placeholder="Hora de final" id="endInput" maxlength="5">
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="taskType">Tipo de tarea</label>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="taskType" id="typeIInput" value="I">
+                  <label class="form-check-label" for="typeIInput"> Incidencia</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="taskType" id="typePInput" value="P">
+                  <label class="form-check-label" for="typePInput">Petición</label>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="userInput">Responsable</label>
+                <select class="form-control" id="userInput">
+                  <option value="M">Marc</option>
+                  <option value="F">Fernando</option>
+                  <option value="A">Albert</option>
+                  <option value="S">Silvia</option>
+                  <option value="E">Eric</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="finishedInput">
+                  <label class="form-check-label" for="finishedInput"><b>Tarea terminada</b></label>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary">Guardar</button>
             </form>
-          </div>
+          </div>    
         </div>
       </div>
     </div>
