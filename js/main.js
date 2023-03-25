@@ -20,8 +20,8 @@ form.addEventListener("submit", (event) => {
   card.innerHTML = `
     <h2>Week ${week}, ${year}</h2>
     <p>${desc}</p>
-    <button type=\"button\" class=\"btn btn-primary agree\">Agregar tarjeta</button>
-    <button type=\"button\" class=\"btn btn-primary delete\" id=\"delete\" data-bs-toggle=\"modal\" data-bs-target=\"#myModalQuit\">Quitar tarjeta</button>
+    <button type="button" class="btn btn-primary agree">Agregar tarjeta</button>
+    <button type="button" class="btn btn-primary delete" id="delete" data-bs-toggle="modal" data-bs-target="#myModalQuit">Quitar tarjeta</button>
     `;
 
   // Agregar la tarjeta al contenedor
@@ -36,17 +36,24 @@ form.addEventListener("submit", (event) => {
   modalInstance.hide();
 
   // Funcionalidad de quitar tarjeta (lanza modal de confirmacion)
-  const quitCard = document.querySelector("#QuitCard");
+  const quitCard = card.querySelector(".delete");
 
   quitCard.addEventListener("click", () => {
-    tareaEliminada(card);
     const modalQuit = document.querySelector("#myModalQuit");
     const modalInstance = bootstrap.Modal.getInstance(modalQuit);
-    modalInstance.hide();
-  });
-});
+    modalInstance.show();
 
-//Elimina el elemento padre del elemento que se haya seleccionado
-function tareaEliminada(element) {
-  element.parentNode.parentNode.removeChild(element.parentNode);
-}
+    // Funcionalidad de quitar tarjeta (elimina tarjeta)
+    const QuitCard = document.querySelector("#QuitCard");
+    QuitCard.addEventListener("click", () => {
+      modalInstance.hide();
+      if (card.parentNode) {
+        tareaEliminada(card);
+      }
+    });
+  });
+  //Elimina el elemento padre del elemento que se haya seleccionado
+  function tareaEliminada(element) {
+    element.parentNode.removeChild(element);
+  }
+});
