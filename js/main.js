@@ -20,9 +20,9 @@ form.addEventListener("submit", (event) => {
   card.innerHTML = `
     <h2>Week ${week}, ${year}</h2>
     <p>${desc}</p>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Eliminar</button>
     <button type="button" class="btn btn-primary" onclick="window.location.href='html/dashboard.html'">Consultar</button>
-  `;
+    <button type="button" class="btn btn-primary delete" id="delete" data-bs-toggle="modal" data-bs-target="#myModalQuit">Eliminar</button>
+    `;
 
   // Agregar la tarjeta al contenedor
   cardContainer.appendChild(card);
@@ -34,4 +34,26 @@ form.addEventListener("submit", (event) => {
   const modal = document.querySelector("#myModal");
   const modalInstance = bootstrap.Modal.getInstance(modal);
   modalInstance.hide();
+
+  // Funcionalidad de quitar tarjeta (lanza modal de confirmacion)
+  const quitCard = card.querySelector(".delete");
+
+  quitCard.addEventListener("click", () => {
+    const modalQuit = document.querySelector("#myModalQuit");
+    const modalInstance = bootstrap.Modal.getInstance(modalQuit);
+    modalInstance.show();
+
+    // Funcionalidad de quitar tarjeta (elimina tarjeta)
+    const QuitCard = document.querySelector("#QuitCard");
+    QuitCard.addEventListener("click", () => {
+      modalInstance.hide();
+      if (card.parentNode) {
+        tareaEliminada(card);
+      }
+    });
+  });
+  //Elimina el elemento padre del elemento que se haya seleccionado
+  function tareaEliminada(element) {
+    element.parentNode.removeChild(element);
+  }
 });
