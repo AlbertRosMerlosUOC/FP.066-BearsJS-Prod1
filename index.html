@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="./libs/normalize.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
   <link rel="stylesheet" href="./css/style.css">
   <link rel="stylesheet" href="./css/base.css">
 </head>
@@ -27,7 +28,7 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page" href="#">Inicio</a>
               </li>
               <!-- Albert: Reservado para futuro desarrollo
               <li class="nav-item">
@@ -58,35 +59,69 @@
           </div>
           <div class="modal-body">
             <form id="myForm">
-              <input type="number" placeholder="Enter week" id="weekInput" maxlength="2">
-              <input type="number" placeholder="Enter years" id="yearInput" maxlength="4">
-              <div>
-                <textarea type="text"placeholder="Description" rows="3" id="descInput"></textarea>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col">
+                    <label class="form-label" for="nameInput">Semana</label>
+                    <input class="form-control" type="number" placeholder="Semana" id="weekInput" maxlength="2">
+                  </div>
+                  <div class="col">
+                    <label class="form-label" for="nameInput">Año</label>
+                    <input class="form-control" type="number" placeholder="Año" id="yearInput" maxlength="4">
+                  </div>
+                </div>
               </div>
-              <input type="color" placeholder="Enter your color" id="colorInput">
-              <button type="submit" class="btn btn-primary">Add</button>
+              <div class="form-group">
+                <label class="form-label" for="descInput">Descripción</label>
+                <textarea class="form-control" placeholder="Descripción" rows="3" id="descInput"></textarea>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="taskType">Modalidad de trabajo</label>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="taskType" id="typeIInput" value="P">
+                  <label class="form-check-label" for="typePInput">Presencial</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="taskType" id="typePInput" value="T">
+                  <label class="form-check-label" for="typeTInput">Teletrabajo</label>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col">
+                    <label class="form-label" for="iniInput">Horario laboral</label>
+                    de <input type="time" placeholder="Hora de inicio" id="iniInput" maxlength="5">
+                    a <input type="time" placeholder="Hora de final" id="endInput" maxlength="5">
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="colorInput">Color</label>
+                <input type="color" placeholder="Color" id="colorInput">
+              </div>
+              <button type="submit" class="btn btn-primary">Añadir</button>
             </form>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Contenedor de la tarjeta -->
-    <div id="cardContainer">
-    <!-- Las nuevas tarjetas se agregarán aquí -->
+    <!-- Contenedor de las tarjetas de semana creadas -->
+    <div id="cardContainer" class="margin-10 radius-10">
+      <!-- Las nuevas tarjetas se agregarán aquí -->
     </div>
 
     <div class="modal fade" id="myModalQuit" tabindex="1" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="myModalLabel">Agregar tarjeta</h5>
+            <h5 class="modal-title" id="myModalLabel">Eliminar tarjeta</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <p>¿Estas seguro que quieres borrar esta tarjeta?</p>
+            <p>¿Estás seguro que quieres borrar esta tarjeta?</p>
           </div>
-          <button type="button" class="btn btn-primary" id="QuitCard">Quitar</button>
+          <button type="button" class="btn btn-danger" id="deleteCard">Eliminar</button>
         </div>
       </div>
     </div>

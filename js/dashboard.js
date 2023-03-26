@@ -18,9 +18,9 @@ form.addEventListener("submit", (event) => {
   card.innerHTML = `
     <p><b>${name}</b></p>
     <p>${desc}</p>
-    <div class="taskButtonsDiv">
-      <button type=\"button\" class=\"btn btn-success xx-small\" data-bs-toggle=\"modal\" data-bs-target=\"#newTask\"><i class="fa fa-edit fa-lg"></i></button>
-      <button type=\"button\" class=\"btn btn-danger xx-small btn-deleteTask\"><i class="fa fa-trash-o fa-lg"></i></button>
+    <div class="buttonsDiv">
+      <button type="button" class="btn btn-success xx-small" data-bs-toggle="modal" data-bs-target="#newTask"><i class="fa fa-edit fa-lg"></i></button>
+      <button type="button" class="btn btn-danger xx-small btn-deleteTask" data-bs-toggle="modal" data-bs-target="#myModalDelete"><i class="fa fa-trash-o fa-lg"></i></button>
     </div>
   `;
 
@@ -30,10 +30,20 @@ form.addEventListener("submit", (event) => {
   // Agregar un controlador de eventos "click" al segundo botón
   deleteTask.addEventListener("click", () => {
     // Obtener el elemento "div" que contiene el botón y eliminarlo
-    const cardContainer = deleteTask.closest(".card");
-    if (confirm("¿Está seguro/a de querer eliminar la tarea?")) {
-      cardContainer.remove();
-    }
+    const cardContainer = deleteTask.parentElement.parentElement;
+
+    const modalDelete = document.querySelector("#myModalDelete");
+    const modalInstance = bootstrap.Modal.getInstance(modalDelete);
+    modalInstance.show();
+
+    // Funcionalidad de quitar tarjeta (elimina tarjeta)
+    const deleteCard = document.querySelector("#deleteCard");
+    deleteCard.addEventListener("click", () => {
+      modalInstance.hide();
+      if (card.parentNode) {
+        cardContainer.remove();
+      }
+    });
   });
 
   // Agregar atributo "draggable" al elemento "card"

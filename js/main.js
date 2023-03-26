@@ -11,18 +11,26 @@ form.addEventListener("submit", (event) => {
   const week = document.querySelector("#weekInput").value;
   const year = document.querySelector("#yearInput").value;
   const desc = document.querySelector("#descInput").value;
+  const type = document.querySelector('input[name="taskType"]:checked + label').textContent;
+  const hourIni = document.querySelector("#iniInput").value;
+  const hourEnd = document.querySelector("#endInput").value;
   const color = document.querySelector("#colorInput").value;
 
   // Crear un nuevo elemento HTML para la tarjeta
   const card = document.createElement("div");
   card.classList.add("card");
+  card.classList.add("cardWeek");
   card.style.backgroundColor = color;
   card.innerHTML = `
-    <h2>Week ${week}, ${year}</h2>
+    <h4>Semana ${week} del año ${year}</h4>
     <p>${desc}</p>
-    <button type="button" class="btn btn-primary" onclick="window.location.href='html/dashboard.html'">Consultar</button>
-    <button type="button" class="btn btn-primary delete" id="delete" data-bs-toggle="modal" data-bs-target="#myModalQuit">Eliminar</button>
-    `;
+    <p><b>Modalidad de trabajo:</b> ${type}</p>
+    <p><b>Horario laboral:</b> de ${hourIni} a ${hourEnd}</p>
+    <div class="buttonsDiv">
+      <button type="button" class="btn btn-success" onclick="window.location.href='html/dashboard.html'"><i class="fa fa-search fa-lg"></i></button>
+      <button type="button" class="btn btn-danger delete" id="delete" data-bs-toggle="modal" data-bs-target="#myModalQuit"><i class="fa fa-trash-o fa-lg"></i></button>
+    </div>
+  `;
 
   // Agregar la tarjeta al contenedor
   cardContainer.appendChild(card);
@@ -44,14 +52,15 @@ form.addEventListener("submit", (event) => {
     modalInstance.show();
 
     // Funcionalidad de quitar tarjeta (elimina tarjeta)
-    const QuitCard = document.querySelector("#QuitCard");
-    QuitCard.addEventListener("click", () => {
+    const deleteCard = document.querySelector("#deleteCard");
+    deleteCard.addEventListener("click", () => {
       modalInstance.hide();
       if (card.parentNode) {
         tareaEliminada(card);
       }
     });
   });
+
   //Elimina el elemento padre del elemento que se haya seleccionado
   function tareaEliminada(element) {
     element.parentNode.removeChild(element);

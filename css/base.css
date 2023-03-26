@@ -8,6 +8,29 @@
     border-radius: 10px;
 }
 
+/* index.html */
+#cardContainer {
+    overflow: auto;
+    min-width: 100%; 
+    min-height: 200px;
+    padding: 3px;
+    background-color: #e1e1e1;
+    background-image: repeating-linear-gradient(135deg, rgba(0, 0, 0, 0.05) 0px, rgba(0, 0, 0, 0.05) 1px, transparent 1px, transparent 10px);
+}
+.cardWeek {
+    min-height: 200px;
+    width: 32.4% !important;
+    font-size: small; 
+    margin: 5px !important;
+    padding: 3px;
+    float: left;
+}
+.cardWeek > .buttonsDiv > button {
+    width: 80px;
+    text-align: center;
+}
+
+/* html/dashboard.html */
 .dayContainer {
     width: 13%; 
     min-width: 135px; 
@@ -35,7 +58,7 @@
 }
 
 #unassignedTasks {
-    width: auto; 
+    overflow: auto;
     min-width: 100%; 
     min-height: 110px;
     padding: 3px;
@@ -43,22 +66,26 @@
     background-image: repeating-linear-gradient(135deg, rgba(0, 0, 0, 0.05) 0px, rgba(0, 0, 0, 0.05) 1px, transparent 1px, transparent 10px);
 }
 .cardTask {
-    width: 140px !important;
+    width: 150px;
     font-size: x-small; 
     margin: 5px !important;
     padding: 3px;
     float: left;
+    opacity: 0.85;
+}
+.dayContainer > .cardTask {
+    width: 95%;
 }
 .cardTask > p {
     line-height: 10px;
+    text-align: left !important;
 }
-/* TODO */
-.taskButtonsDiv {
+.buttonsDiv {
     width: 100%;
     display: inline-block;
+    text-align: center;
 }
-/* */
-.cardTask > .taskButtonsDiv > button {
+.cardTask > .buttonsDiv > button {
     font-size: xx-small; 
     margin: 3px;
     width: 40px;
