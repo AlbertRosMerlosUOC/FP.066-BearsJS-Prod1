@@ -4,6 +4,9 @@
 .margin-10 {
     margin: 10px;
 }
+.margin-10-b {
+    margin-bottom: 10px;
+}
 .radius-10 {
     border-radius: 10px;
 }
@@ -31,6 +34,11 @@
 }
 
 /* html/dashboard.html */
+#days {
+    width: auto; 
+    min-width: 100%; 
+    text-align: center;
+}
 .dayContainer {
     width: 13%; 
     min-width: 135px; 

@@ -377,3 +377,8 @@ template {
 [hidden] {
   display: none;
 }
+
+.accordion-button:not(.collapsed) {
+  background-color: #21252905 !important;
+  color: #212529 !important;
+}

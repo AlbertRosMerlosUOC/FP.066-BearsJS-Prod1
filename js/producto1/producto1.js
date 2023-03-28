@@ -27,7 +27,7 @@ form.addEventListener("submit", (event) => {
     <p><b>Modalidad de trabajo:</b> ${type}</p>
     <p><b>Horario laboral:</b> de ${hourIni} a ${hourEnd}</p>
     <div class="buttonsDiv">
-      <button type="button" class="btn btn-success" onclick="window.location.href='html/dashboard.html'"><i class="fa fa-search fa-lg"></i></button>
+      <button type="button" class="btn btn-success" onclick="window.location.href='./dashboard.html'"><i class="fa fa-search fa-lg"></i></button>
       <button type="button" class="btn btn-danger delete" id="delete" data-bs-toggle="modal" data-bs-target="#myModalQuit"><i class="fa fa-trash-o fa-lg"></i></button>
     </div>
   `;
