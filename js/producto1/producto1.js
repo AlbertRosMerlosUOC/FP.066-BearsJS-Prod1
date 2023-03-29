@@ -11,11 +11,12 @@ form.addEventListener("submit", (event) => {
   const week = document.querySelector("#weekInput").value;
   const year = document.querySelector("#yearInput").value;
   const desc = document.querySelector("#descInput").value;
-  const type = document.querySelector('input[name="taskType"]:checked + label').textContent;
+  const type = document.querySelector('input[name="workType"]:checked + label').textContent;
   const hourIni = document.querySelector("#iniInput").value;
   const hourEnd = document.querySelector("#endInput").value;
   const color = document.querySelector("#colorInput").value;
 
+  const schedule = (hourIni != "" && hourEnd != "") ? "de " + hourIni + " a " + hourEnd + "h": "No especificadas horas de inicio y de fin";
   // Crear un nuevo elemento HTML para la tarjeta
   const card = document.createElement("div");
   card.classList.add("card");
@@ -25,7 +26,7 @@ form.addEventListener("submit", (event) => {
     <h4>Semana ${week} del año ${year}</h4>
     <p>${desc}</p>
     <p><b>Modalidad de trabajo:</b> ${type}</p>
-    <p><b>Horario laboral:</b> de ${hourIni} a ${hourEnd}</p>
+    <p><b>Horario laboral:</b> ${schedule}</p>
     <div class="buttonsDiv">
       <button type="button" class="btn btn-success" onclick="window.location.href='./dashboard.html'"><i class="fa fa-search fa-lg"></i></button>
       <button type="button" class="btn btn-danger delete" id="delete" data-bs-toggle="modal" data-bs-target="#myModalQuit"><i class="fa fa-trash-o fa-lg"></i></button>

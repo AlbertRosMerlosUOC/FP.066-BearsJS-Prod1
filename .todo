@@ -10,4 +10,4 @@ html
         dashboard.html
             + Controladores de formulario
             + Agregar tarjetas directamente a un día en concreto
-            - Funcionalidad "consultar día"
+            + Funcionalidad "consultar día"

@@ -64,12 +64,12 @@
             <div class="form-group">
               <div class="row">
                 <div class="col">
-                  <label class="form-label" for="nameInput">Semana</label>
+                  <label class="form-label" for="nameInput">Semana&nbsp;<span class="required" title="Campo requerido">*</span></label>
                   <!-- Albert: Controlamos que la semana está entre 1 y 52. -->
                   <input class="form-control" type="number" placeholder="Semana" id="weekInput" maxlength="2" min="1" max="52" required>
                 </div>
                 <div class="col">
-                  <label class="form-label" for="nameInput">Año</label>
+                  <label class="form-label" for="nameInput">Año&nbsp;<span class="required" title="Campo requerido">*</span></label>
                   <!-- Albert: Controlamos que el año es mínimo el 2023 y máximo 2033. -->
                   <input class="form-control" type="number" placeholder="Año" id="yearInput" maxlength="4" min="2023" max="2033" required>
                 </div>
@@ -77,16 +77,16 @@
             </div>
             <div class="form-group">
               <label class="form-label" for="descInput">Descripción</label>
-              <textarea class="form-control" placeholder="Descripción" rows="3" id="descInput" required></textarea>
+              <textarea class="form-control" placeholder="Descripción" rows="3" id="descInput"></textarea>
             </div>
             <div class="form-group">
-              <label class="form-label" for="taskType">Modalidad de trabajo</label>
+              <label class="form-label" for="workType">Modalidad de trabajo&nbsp;<span class="required" title="Campo requerido">*</span></label>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="taskType" id="typeIInput" value="P" required>
+                <input class="form-check-input" type="radio" name="workType" id="typeIInput" value="P" required>
                 <label class="form-check-label" for="typePInput">Presencial</label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="taskType" id="typePInput" value="T" required>
+                <input class="form-check-input" type="radio" name="workType" id="typePInput" value="T" required>
                 <label class="form-check-label" for="typeTInput">Teletrabajo</label>
               </div>
             </div>
@@ -94,8 +94,8 @@
               <div class="row">
                 <div class="col">
                   <label class="form-label" for="iniInput">Horario laboral</label>
-                  de <input type="time" placeholder="Hora de inicio" id="iniInput" maxlength="5" required>
-                  a <input type="time" placeholder="Hora de final" id="endInput" maxlength="5" required>
+                  de <input type="time" placeholder="Hora de inicio" id="iniInput" maxlength="5">
+                  a <input type="time" placeholder="Hora de final" id="endInput" maxlength="5">
                 </div>
               </div>
             </div>
