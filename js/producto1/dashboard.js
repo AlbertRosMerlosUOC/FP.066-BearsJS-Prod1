@@ -1,8 +1,34 @@
-// Seleccionar el formulario y el contenedor de la tarjeta
+// Seleccionar el formulario y los contenedores de la tarjetas
 const form = document.querySelector("#myForm");
-const cardContainer = document.querySelector("#unassignedTasks");
+const dropUnassigned = document.getElementById("unassignedTasks");
+const dropDay1 = document.getElementById("day1");
+const dropDay2 = document.getElementById("day2");
+const dropDay3 = document.getElementById("day3");
+const dropDay4 = document.getElementById("day4");
+const dropDay5 = document.getElementById("day5");
+const dropDay6 = document.getElementById("day6");
+const dropDay7 = document.getElementById("day7");
+const targetCard = document.getElementById("target-card");
 
-// Agregar un escuchador de eventos para el formulario
+// Agregar controladores de eventos para eventos de arrastrar y soltar
+dropUnassigned.addEventListener("dragover", dragOver);
+dropUnassigned.addEventListener("drop", drop);
+dropDay1.addEventListener("dragover", dragOver);
+dropDay1.addEventListener("drop", drop);
+dropDay2.addEventListener("dragover", dragOver);
+dropDay2.addEventListener("drop", drop);
+dropDay3.addEventListener("dragover", dragOver);
+dropDay3.addEventListener("drop", drop);
+dropDay4.addEventListener("dragover", dragOver);
+dropDay4.addEventListener("drop", drop);
+dropDay5.addEventListener("dragover", dragOver);
+dropDay5.addEventListener("drop", drop);
+dropDay6.addEventListener("dragover", dragOver);
+dropDay6.addEventListener("drop", drop);
+dropDay7.addEventListener("dragover", dragOver);
+dropDay7.addEventListener("drop", drop);
+
+// Agregar un escuchador de evento "SUBMIT" para el formulario
 form.addEventListener("submit", (event) => {
   // Prevenir que el formulario se envíe
   event.preventDefault();
@@ -30,7 +56,7 @@ form.addEventListener("submit", (event) => {
   // Agregar un controlador de eventos "click" al segundo botón
   deleteTask.addEventListener("click", () => {
     // Obtener el elemento "div" que contiene el botón y eliminarlo
-    const cardContainer = deleteTask.parentElement.parentElement;
+    const dropUnassigned = deleteTask.parentElement.parentElement;
 
     const modalDelete = document.querySelector("#myModalDelete");
     const modalInstance = bootstrap.Modal.getInstance(modalDelete);
@@ -41,7 +67,7 @@ form.addEventListener("submit", (event) => {
     deleteCard.addEventListener("click", () => {
       modalInstance.hide();
       if (card.parentNode) {
-        cardContainer.remove();
+        dropUnassigned.remove();
       }
     });
   });
@@ -63,8 +89,35 @@ form.addEventListener("submit", (event) => {
     this.classList.remove("dragging");
   }
 
-  // Agregar la tarjeta al contenedor
-  cardContainer.appendChild(card);
+  // Agregar la tarjeta al contenedor que toque según el día clickado
+  var tC = document.getElementById("target-card").value;
+  console.log(tC);
+  switch (tC) {
+    case '1':
+      dropDay1.appendChild(card);
+      break;
+    case '2':
+      dropDay2.appendChild(card);
+      break;
+    case '3':
+      dropDay3.appendChild(card);
+      break;
+    case '4':
+      dropDay4.appendChild(card);
+      break;
+    case '5':
+      dropDay5.appendChild(card);
+      break;
+    case '6':
+      dropDay6.appendChild(card);
+      break;
+    case '7':
+      dropDay7.appendChild(card);
+      break;
+    default:
+      dropUnassigned.appendChild(card);
+      break;
+  }
 
   // Limpiar los valores del formulario
   form.reset();
@@ -74,33 +127,6 @@ form.addEventListener("submit", (event) => {
   const modalInstance = bootstrap.Modal.getInstance(modal);
   modalInstance.hide();
 });
-
-const dropDay1 = document.getElementById("day1");
-const dropDay2 = document.getElementById("day2");
-const dropDay3 = document.getElementById("day3");
-const dropDay4 = document.getElementById("day4");
-const dropDay5 = document.getElementById("day5");
-const dropDay6 = document.getElementById("day6");
-const dropDay7 = document.getElementById("day7");
-const dropUnassigned = document.getElementById("unassignedTasks");
-
-// Agregar controladores de eventos para eventos de arrastrar y soltar
-dropDay1.addEventListener("dragover", dragOver);
-dropDay1.addEventListener("drop", drop);
-dropDay2.addEventListener("dragover", dragOver);
-dropDay2.addEventListener("drop", drop);
-dropDay3.addEventListener("dragover", dragOver);
-dropDay3.addEventListener("drop", drop);
-dropDay4.addEventListener("dragover", dragOver);
-dropDay4.addEventListener("drop", drop);
-dropDay5.addEventListener("dragover", dragOver);
-dropDay5.addEventListener("drop", drop);
-dropDay6.addEventListener("dragover", dragOver);
-dropDay6.addEventListener("drop", drop);
-dropDay7.addEventListener("dragover", dragOver);
-dropDay7.addEventListener("drop", drop);
-dropUnassigned.addEventListener("dragover", dragOver);
-dropUnassigned.addEventListener("drop", drop);
 
 function dragOver(event) {
   // Prevenir el comportamiento predeterminado
@@ -133,3 +159,20 @@ function drop(event) {
     dropUnassigned.appendChild(draggedElement);
   }
 }
+
+// Seleccionamos todos los elementos con la clase "button-add"
+const btnAdd = document.querySelectorAll('.button-add');
+
+// Agregamos un evento de click a cada uno de ellos
+btnAdd.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const idDay = btn.getAttribute('target-day');
+    assignTarget(idDay);
+  });
+});
+
+// Definir la función que se llamará al hacer clic en los botones para añadir tareas
+function assignTarget(id) {
+  targetCard.value = id;
+}
+

@@ -61,7 +61,7 @@ form.addEventListener("submit", (event) => {
     });
   });
 
-  //Elimina el elemento padre del elemento que se haya seleccionado
+  // Elimina el elemento padre del elemento que se haya seleccionado
   function tareaEliminada(element) {
     element.parentNode.removeChild(element);
   }

@@ -1,8 +1,13 @@
-index.html 
-    - Controladores de formulario
-    - Botón de información con instrucciones
-dashboard.html
-    - Controladores de formulario
-    - Botón de información con instrucciones
-    - Agregar tarjetas directamente en un día en concreto
-    - Funcionalidad "consultar día"
+<!-- 
+        - Pendiente
+        + Hecho 
+-->
+
+html
+    producto1
+        producto1.html 
+            + Controladores de formulario
+        dashboard.html
+            + Controladores de formulario
+            + Agregar tarjetas directamente a un día en concreto
+            - Funcionalidad "consultar día"
