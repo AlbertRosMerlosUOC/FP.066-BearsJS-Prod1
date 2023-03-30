@@ -41,6 +41,7 @@ form.addEventListener("submit", (event) => {
   const hEnd = document.querySelector("#endInput").value;
   const tTyp = document.querySelector('input[name="taskType"]:checked').value;
   const user = document.querySelector("#userInput").value;
+  const agreeInDay = document.querySelector("#agreeInDay").value;
   const fini = document.querySelector("#finishedInput").checked ? "1" : "0";
 
   // Crear un nuevo elemento HTML para la tarjeta
@@ -54,12 +55,34 @@ form.addEventListener("submit", (event) => {
     <input type="hidden" class="fHEnd" value="${hEnd}"/>
     <input type="hidden" class="fTTyp" value="${tTyp}"/>
     <input type="hidden" class="fUser" value="${user}"/>
+    <input type="hidden" class="fDays" value="${agreeInDay}"/>
     <input type="hidden" class="fFini" value="${fini}"/>
     <div class="buttonsDiv">
       <button type="button" class="btn btn-success xx-small button-editTask" data-bs-toggle="modal" data-bs-target="#formTask"><i class="fa fa-edit fa-lg"></i></button>
       <button type="button" class="btn btn-danger xx-small button-deleteTask" data-bs-toggle="modal" data-bs-target="#myModalDelete"><i class="fa fa-trash-o fa-lg"></i></button>
     </div>
   `;
+
+  // Agregar la tarjeta al contenedor correspondiente
+  console.log(agreeInDay);
+  console.log(dropDay1);
+  if (agreeInDay == "") {
+    dropUnassigned.appendChild(card);
+  } else if (agreeInDay == "L") {
+    dropDay1.appendChild(card);
+  } else if (agreeInDay == "M") {
+    dropDay2.appendChild(card);
+  } else if (agreeInDay == "X") {
+    dropDay3.appendChild(card);
+  } else if (agreeInDay == "J") {
+    dropDay4.appendChild(card);
+  } else if (agreeInDay == "V") {
+    dropDay5.appendChild(card);
+  } else if (agreeInDay == "S") {
+    dropDay6.appendChild(card);
+  } else if (agreeInDay == "D") {
+    dropDay7.appendChild(card);
+  }
 
   // Obtener el primer botón dentro del elemento "card"
   const editTask = card.querySelector(".button-editTask");
@@ -70,13 +93,25 @@ form.addEventListener("submit", (event) => {
     form.reset();
     // Añadimos la información de la tarea al formulario
     const editCard = editTask.parentElement.parentElement;
-    document.querySelector("#nameInput").value = editCard.querySelector(".fName").textContent;
-    document.querySelector("#descInput").value = editCard.querySelector(".fDesc").textContent;
-    document.querySelector("#iniInput").value  = editCard.querySelector(".fHIni").value;
-    document.querySelector("#endInput").value  = editCard.querySelector(".fHEnd").value;
-    document.querySelector('input[name="taskType"][value="' + editCard.querySelector(".fTTyp").value + '"]').checked = "true";
-    document.querySelector("#userInput").value = editCard.querySelector(".fUser").value;
-    document.querySelector("#finishedInput").checked = (editCard.querySelector(".fFini").value == "1") ? "checked" : "";
+    document.querySelector("#nameInput").value =
+      editCard.querySelector(".fName").textContent;
+    document.querySelector("#descInput").value =
+      editCard.querySelector(".fDesc").textContent;
+    document.querySelector("#iniInput").value =
+      editCard.querySelector(".fHIni").value;
+    document.querySelector("#endInput").value =
+      editCard.querySelector(".fHEnd").value;
+    document.querySelector(
+      'input[name="taskType"][value="' +
+        editCard.querySelector(".fTTyp").value +
+        '"]'
+    ).checked = "true";
+    document.querySelector("#userInput").value =
+      editCard.querySelector(".fUser").value;
+    document.querySelector("#agreeInDay").value =
+      editCard.querySelector(".fDays").value;
+    document.querySelector("#finishedInput").checked =
+      editCard.querySelector(".fFini").value == "1" ? "checked" : "";
     // Añadimos una clase a la tarjeta que estamos editando para poder actualizarla después
     editCard.classList.add("editing");
     // Ocultamos el botón de crear tarea
@@ -127,25 +162,25 @@ form.addEventListener("submit", (event) => {
   // Agregar la tarjeta al contenedor que toque según el día clickado
   var tC = document.getElementById("target-card").value;
   switch (tC) {
-    case '1':
+    case "1":
       dropDay1.appendChild(card);
       break;
-    case '2':
+    case "2":
       dropDay2.appendChild(card);
       break;
-    case '3':
+    case "3":
       dropDay3.appendChild(card);
       break;
-    case '4':
+    case "4":
       dropDay4.appendChild(card);
       break;
-    case '5':
+    case "5":
       dropDay5.appendChild(card);
       break;
-    case '6':
+    case "6":
       dropDay6.appendChild(card);
       break;
-    case '7':
+    case "7":
       dropDay7.appendChild(card);
       break;
     default:
@@ -195,12 +230,12 @@ function drop(event) {
 }
 
 // Seleccionamos todos los elementos con la clase "button-add"
-const btnAdd = document.querySelectorAll('.button-add');
+const btnAdd = document.querySelectorAll(".button-add");
 
 // Agregamos un evento de click a cada uno de ellos
 btnAdd.forEach((btn) => {
-  btn.addEventListener('click', () => {
-    const idDay = btn.getAttribute('target-day');
+  btn.addEventListener("click", () => {
+    const idDay = btn.getAttribute("target-day");
     assignTarget(idDay);
     // Reiniciamos el formulario
     form.reset();
@@ -222,7 +257,7 @@ saveTask.addEventListener("click", () => {
   // Prevenimos que el botón haga un "submit" al ser clicado
   event.preventDefault();
   // Recuperamos la tarjeta de la tarea que estamos editando mediante la clase "editing"
-  const editingTask = document.querySelector('.editing');
+  const editingTask = document.querySelector(".editing");
   // Modificamos el contenido de la tarjeta con los nuevos valores del formulario
   const name = document.querySelector("#nameInput").value;
   const desc = document.querySelector("#descInput").value;
@@ -230,6 +265,7 @@ saveTask.addEventListener("click", () => {
   const hEnd = document.querySelector("#endInput").value;
   const tTyp = document.querySelector('input[name="taskType"]:checked').value;
   const user = document.querySelector("#userInput").value;
+  const days = document.querySelector("#agreeInDay").value;
   const fini = document.querySelector("#finishedInput").checked ? "1" : "0";
   editingTask.innerHTML = `
     <p class="fName"><b>${name}</b></p>
@@ -238,6 +274,7 @@ saveTask.addEventListener("click", () => {
     <input type="hidden" class="fHEnd" value="${hEnd}"/>
     <input type="hidden" class="fTTyp" value="${tTyp}"/>
     <input type="hidden" class="fUser" value="${user}"/>
+    <input type="hidden" class="fDays" value="${days}"/>
     <input type="hidden" class="fFini" value="${fini}"/>
     <div class="buttonsDiv">
       <button type="button" class="btn btn-success xx-small button-editTask" data-bs-toggle="modal" data-bs-target="#formTask"><i class="fa fa-edit fa-lg"></i></button>
@@ -253,13 +290,25 @@ saveTask.addEventListener("click", () => {
     form.reset();
     // Añadimos la información de la tarea al formulario
     const editCard = editTask.parentElement.parentElement;
-    document.querySelector("#nameInput").value = editCard.querySelector(".fName").textContent;
-    document.querySelector("#descInput").value = editCard.querySelector(".fDesc").textContent;
-    document.querySelector("#iniInput").value  = editCard.querySelector(".fHIni").value;
-    document.querySelector("#endInput").value  = editCard.querySelector(".fHEnd").value;
-    document.querySelector('input[name="taskType"][value="' + editCard.querySelector(".fTTyp").value + '"]').checked = "true";
-    document.querySelector("#userInput").value = editCard.querySelector(".fUser").value;
-    document.querySelector("#finishedInput").checked = (editCard.querySelector(".fFini").value == "1") ? "checked" : "";
+    document.querySelector("#nameInput").value =
+      editCard.querySelector(".fName").textContent;
+    document.querySelector("#descInput").value =
+      editCard.querySelector(".fDesc").textContent;
+    document.querySelector("#iniInput").value =
+      editCard.querySelector(".fHIni").value;
+    document.querySelector("#endInput").value =
+      editCard.querySelector(".fHEnd").value;
+    document.querySelector(
+      'input[name="taskType"][value="' +
+        editCard.querySelector(".fTTyp").value +
+        '"]'
+    ).checked = "true";
+    document.querySelector("#userInput").value =
+      editCard.querySelector(".fUser").value;
+    document.querySelector("#agreeInDay").value =
+      editCard.querySelector(".fDays").value;
+    document.querySelector("#finishedInput").checked =
+      editCard.querySelector(".fFini").value == "1" ? "checked" : "";
     // Añadimos una clase a la tarjeta que estamos editando para poder actualizarla después
     editCard.classList.add("editing");
     // Ocultamos el botón de crear tarea
@@ -301,8 +350,8 @@ saveTask.addEventListener("click", () => {
 
 modal.addEventListener("hidden.bs.modal", function (event) {
   // Eliminamos la clase "editing" de cualquier tarea que se haya editado
-  const editingTask = document.querySelectorAll('.editing');
+  const editingTask = document.querySelectorAll(".editing");
   for (let i = 0; i < editingTask.length; i++) {
-    editingTask[i].classList.remove('editing');
+    editingTask[i].classList.remove("editing");
   }
 });
