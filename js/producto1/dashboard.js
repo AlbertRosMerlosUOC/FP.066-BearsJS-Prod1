@@ -63,27 +63,6 @@ form.addEventListener("submit", (event) => {
     </div>
   `;
 
-  // Agregar la tarjeta al contenedor correspondiente
-  console.log(agreeInDay);
-  console.log(dropDay1);
-  if (agreeInDay == "") {
-    dropUnassigned.appendChild(card);
-  } else if (agreeInDay == "L") {
-    dropDay1.appendChild(card);
-  } else if (agreeInDay == "M") {
-    dropDay2.appendChild(card);
-  } else if (agreeInDay == "X") {
-    dropDay3.appendChild(card);
-  } else if (agreeInDay == "J") {
-    dropDay4.appendChild(card);
-  } else if (agreeInDay == "V") {
-    dropDay5.appendChild(card);
-  } else if (agreeInDay == "S") {
-    dropDay6.appendChild(card);
-  } else if (agreeInDay == "D") {
-    dropDay7.appendChild(card);
-  }
-
   // Obtener el primer botón dentro del elemento "card"
   const editTask = card.querySelector(".button-editTask");
 
@@ -161,31 +140,23 @@ form.addEventListener("submit", (event) => {
 
   // Agregar la tarjeta al contenedor que toque según el día clickado
   var tC = document.getElementById("target-card").value;
-  switch (tC) {
-    case "1":
-      dropDay1.appendChild(card);
-      break;
-    case "2":
-      dropDay2.appendChild(card);
-      break;
-    case "3":
-      dropDay3.appendChild(card);
-      break;
-    case "4":
-      dropDay4.appendChild(card);
-      break;
-    case "5":
-      dropDay5.appendChild(card);
-      break;
-    case "6":
-      dropDay6.appendChild(card);
-      break;
-    case "7":
-      dropDay7.appendChild(card);
-      break;
-    default:
-      dropUnassigned.appendChild(card);
-      break;
+
+  if (tC == "1" || agreeInDay == "L") {
+    dropDay1.appendChild(card);
+  } else if (tC == "2" || agreeInDay == "M") {
+    dropDay2.appendChild(card);
+  } else if (tC == "3" || agreeInDay == "X") {
+    dropDay3.appendChild(card);
+  } else if (tC == "4" || agreeInDay == "J") {
+    dropDay4.appendChild(card);
+  } else if (tC == "5" || agreeInDay == "V") {
+    dropDay5.appendChild(card);
+  } else if (tC == "6" || agreeInDay == "S") {
+    dropDay6.appendChild(card);
+  } else if (tC == "7" || agreeInDay == "D") {
+    dropDay7.appendChild(card);
+  } else {
+    dropUnassigned.appendChild(card);
   }
 
   // Limpiar los valores del formulario
