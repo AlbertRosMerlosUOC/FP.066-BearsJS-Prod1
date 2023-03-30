@@ -97,6 +97,8 @@ form.addEventListener("submit", (event) => {
     document.getElementById("modal-add-create").style.display = "none";
     // Mostramos el botón de guardar cambios (para editar la tarea)
     document.getElementById("modal-add-save").style.display = "block";
+    // Ocultamos el campo de añadir al día en la edición de la tarjeta
+    document.querySelector(".div-add-into").style.display = "none";
   });
 
   // Obtener el segundo botón dentro del elemento "card"
@@ -208,6 +210,10 @@ btnAdd.forEach((btn) => {
   btn.addEventListener("click", () => {
     const idDay = btn.getAttribute("target-day");
     assignTarget(idDay);
+    // Ocultamos el campo de añadir al día si se ha clickado en un botón de un día en concreto
+    if (idDay != "0") {
+      document.querySelector(".div-add-into").style.display = "none";
+    }
     // Reiniciamos el formulario
     form.reset();
     // Mostramos el botón de crear tarea
@@ -222,7 +228,7 @@ function assignTarget(id) {
   targetCard.value = id;
 }
 
-// Funcionalidad de quitar tarjeta (elimina tarjeta)
+// Funcionalidad de editar tarjeta (editar tarea)
 const saveTask = document.querySelector("#modal-add-save");
 saveTask.addEventListener("click", () => {
   // Prevenimos que el botón haga un "submit" al ser clicado
@@ -286,6 +292,8 @@ saveTask.addEventListener("click", () => {
     document.getElementById("modal-add-create").style.display = "none";
     // Mostramos el botón de guardar cambios (para editar la tarea)
     document.getElementById("modal-add-save").style.display = "block";
+    // Ocultamos el campo de añadir al día en la edición de la tarjeta
+    document.querySelector(".div-add-into").style.display = "none";
   });
 
   // Obtener el segundo botón dentro del elemento "card"
@@ -325,4 +333,6 @@ modal.addEventListener("hidden.bs.modal", function (event) {
   for (let i = 0; i < editingTask.length; i++) {
     editingTask[i].classList.remove("editing");
   }
+  // Mostramos el campo de añadir al día
+  document.querySelector(".div-add-into").style.display = "block";
 });
